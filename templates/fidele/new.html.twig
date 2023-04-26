@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Fidele{% endblock %}
+
+{% block body %}
+    <h1>Create new Fidele</h1>
+
+    {{ include('fidele/_form.html.twig') }}
+
+    <a href="{{ path('app_fidele_index') }}">back to list</a>
+{% endblock %}

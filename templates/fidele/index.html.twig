@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fidele index{% endblock %}
+
+{% block body %}
+    <h1>Fidele index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenoms</th>
+                <th>Contact</th>
+                <th>Quartier</th>
+                <th>Profession</th>
+                <th>AnneeDeSalut</th>
+                <th>DateNaissance</th>
+                <th>LieuCellule</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fidele in fideles %}
+            <tr>
+                <td>{{ fidele.id }}</td>
+                <td>{{ fidele.nom }}</td>
+                <td>{{ fidele.prenoms }}</td>
+                <td>{{ fidele.contact }}</td>
+                <td>{{ fidele.quartier }}</td>
+                <td>{{ fidele.profession }}</td>
+                <td>{{ fidele.anneeDeSalut ? fidele.anneeDeSalut|date('Y-m-d') : '' }}</td>
+                <td>{{ fidele.dateNaissance ? fidele.dateNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ fidele.lieuCellule }}</td>
+                <td>
+                    <a href="{{ path('app_fidele_show', {'id': fidele.id}) }}">show</a>
+                    <a href="{{ path('app_fidele_edit', {'id': fidele.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fidele_new') }}">Create new</a>
+{% endblock %}

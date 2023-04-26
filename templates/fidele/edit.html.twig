@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Fidele{% endblock %}
+
+{% block body %}
+    <h1>Edit Fidele</h1>
+
+    {{ include('fidele/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_fidele_index') }}">back to list</a>
+
+    {{ include('fidele/_delete_form.html.twig') }}
+{% endblock %}

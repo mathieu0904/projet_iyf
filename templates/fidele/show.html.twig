@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fidele{% endblock %}
+
+{% block body %}
+    <h1>Fidele</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fidele.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ fidele.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenoms</th>
+                <td>{{ fidele.prenoms }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ fidele.contact }}</td>
+            </tr>
+            <tr>
+                <th>Quartier</th>
+                <td>{{ fidele.quartier }}</td>
+            </tr>
+            <tr>
+                <th>Profession</th>
+                <td>{{ fidele.profession }}</td>
+            </tr>
+            <tr>
+                <th>AnneeDeSalut</th>
+                <td>{{ fidele.anneeDeSalut ? fidele.anneeDeSalut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateNaissance</th>
+                <td>{{ fidele.dateNaissance ? fidele.dateNaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>LieuCellule</th>
+                <td>{{ fidele.lieuCellule }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fidele_index') }}">back to list</a>
+
+    <a href="{{ path('app_fidele_edit', {'id': fidele.id}) }}">edit</a>
+
+    {{ include('fidele/_delete_form.html.twig') }}
+{% endblock %}
