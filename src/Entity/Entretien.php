@@ -23,6 +23,9 @@ class Entretien
     #[ORM\Column(length: 255)]
     private ?string $solution = null;
 
+    #[ORM\ManyToOne(inversedBy: 'entretiens')]
+    private ?Fidele $fidele = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Entretien
     public function setSolution(string $solution): self
     {
         $this->solution = $solution;
+
+        return $this;
+    }
+
+    public function getFidele(): ?Fidele
+    {
+        return $this->fidele;
+    }
+
+    public function setFidele(?Fidele $fidele): self
+    {
+        $this->fidele = $fidele;
 
         return $this;
     }

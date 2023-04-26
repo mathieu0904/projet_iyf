@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FideleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -37,6 +39,14 @@ class Fidele
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $lieuCellule = null;
+
+    #[ORM\OneToMany(mappedBy: 'fidele', targetEntity: Entretien::class)]
+    private Collection $entretiens;
+
+    public function __construct()
+    {
+        $this->entretiens = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -135,6 +145,36 @@ class Fidele
     public function setLieuCellule(?string $lieuCellule): self
     {
         $this->lieuCellule = $lieuCellule;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Entretien>
+     */
+    public function getEntretiens(): Collection
+    {
+        return $this->entretiens;
+    }
+
+    public function addEntretien(Entretien $entretien): self
+    {
+        if (!$this->entretiens->contains($entretien)) {
+            $this->entretiens->add($entretien);
+            $entretien->setFidele($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEntretien(Entretien $entretien): self
+    {
+        if ($this->entretiens->removeElement($entretien)) {
+            // set the owning side to null (unless already changed)
+            if ($entretien->getFidele() === $this) {
+                $entretien->setFidele(null);
+            }
+        }
 
         return $this;
     }
