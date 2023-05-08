@@ -149,6 +149,11 @@ class Fidele
         return $this;
     }
 
+    public function __toString()
+    {
+        return $this->getNom()." ".$this->getPrenoms();
+    }
+
     /**
      * @return Collection<int, Entretien>
      */
