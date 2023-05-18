@@ -12,6 +12,7 @@ class EntretienType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('fidele')
             ->add('date')
             ->add('sujet')
             ->add('solution')
