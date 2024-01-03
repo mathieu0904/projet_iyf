@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends '@EasyAdmin/page/content.html.twig' %}
 
 {% block title %}Fidele index{% endblock %}
 
@@ -29,7 +29,7 @@
                 <td>{{ fidele.contact }}</td>
                 <td>{{ fidele.quartier }}</td>
                 <td>{{ fidele.profession }}</td>
-                <td>{{ fidele.anneeDeSalut ? fidele.anneeDeSalut|date('Y-m-d') : '' }}</td>
+                <td>{{ fidele.anneeDeSalut ? fidele.anneeDeSalut|date('Y') : '' }}</td>
                 <td>{{ fidele.dateNaissance ? fidele.dateNaissance|date('Y-m-d') : '' }}</td>
                 <td>{{ fidele.lieuCellule }}</td>
                 <td>

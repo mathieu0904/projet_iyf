@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -12,7 +13,7 @@ use App\Entity\Fidele;
 
 class DashboardController extends AbstractDashboardController
 {
-    #[Route('/admin', name: 'admin')]
+    #[Route('/admin', name: 'admin_dashboard')]
     public function index(): Response
     {
         //return parent::index();
@@ -37,18 +38,20 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Projet Iyf');
+            ->setTitle('Gestion des Fidèles');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        yield MenuItem::linkToCrud('Fidèles', 'fas fa-list', Fidele::class);
+        yield MenuItem::linkToCrud('Entretiens', 'fas fa-list', Entretien::class);
 
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
-            MenuItem::linkToCrud('Entretiens', 'fa fa-tags', Entretien::class),
-            MenuItem::linkToCrud('Fidèles', 'fa fa-file-text', Fidele::class),
+            //MenuItem::linkToCrud('Entretiens', 'fa fa-tags', Entretien::class)
+              //  ->setController(EntretienController::class),
+            //MenuItem::linkToCrud('Fidèles', 'fa fa-file-text', Fidele::class),
 
             MenuItem::section('Users'),
         ];
