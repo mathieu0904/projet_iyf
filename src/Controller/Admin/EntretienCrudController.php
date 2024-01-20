@@ -4,6 +4,8 @@ namespace App\Controller\Admin;
 
 use App\Entity\Entretien;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+
 
 class EntretienCrudController extends AbstractCrudController
 {
@@ -12,14 +14,14 @@ class EntretienCrudController extends AbstractCrudController
         return Entretien::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            'date',
+            'sujet',
+            'solution',
+            AssociationField::new('fidele')->autocomplete(),
         ];
     }
-    */
 }

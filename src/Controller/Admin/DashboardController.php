@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Entretien;
 use App\Entity\Fidele;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+
 
 class DashboardController extends AbstractDashboardController
 {
@@ -44,7 +46,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Fidèles', 'fas fa-list', Fidele::class);
+        yield MenuItem::linkToCrud('Fidèles', 'fas fa-user', Fidele::class);
         yield MenuItem::linkToCrud('Entretiens', 'fas fa-list', Entretien::class);
 
         return [
@@ -56,4 +58,5 @@ class DashboardController extends AbstractDashboardController
             MenuItem::section('Users'),
         ];
     }
+
 }

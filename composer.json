@@ -11,6 +11,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.14",
         "easycorp/easyadmin-bundle": "^4.6",
+        "knplabs/knp-snappy-bundle": "^1.10",
         "sensio/framework-extra-bundle": "^6.2",
         "stof/doctrine-extensions-bundle": "^1.7",
         "symfony/console": "6.2.*",
@@ -23,7 +24,8 @@
         "symfony/security-csrf": "6.2.*",
         "symfony/twig-bundle": "6.2.*",
         "symfony/validator": "6.2.*",
-        "symfony/yaml": "6.2.*"
+        "symfony/yaml": "6.2.*",
+        "vich/uploader-bundle": "^2.3"
     },
     "config": {
         "allow-plugins": {
